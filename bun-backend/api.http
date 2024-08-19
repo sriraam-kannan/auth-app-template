@@ -1,0 +1,28 @@
+@baseUrl = http://localhost:3000/api
+@token = 
+
+### Create User
+POST {{baseUrl}}/createUser
+Content-Type: application/json
+Token: {{token}}
+
+{
+    "username": "",
+    "password": "",
+    "tenant_name": ""
+}
+
+### Get User Profile Details
+POST {{baseUrl}}/getUserProfile
+Content-Type: application/json
+Token: {{token}}
+
+{
+    "username": ""
+}
+
+
+### Get reports
+GET {{baseUrl}}/getReports
+Content-Type: application/json
+Token: {{token}}
