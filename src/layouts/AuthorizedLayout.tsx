@@ -4,7 +4,7 @@ import Header from "@/components/ui/header";
 import Sidebar from "@/components/ui/sidebar";
 
 export default function AuthorizedLayout() {
-  const user: any = localStorage.getItem("neouser");
+  const user: any = localStorage.getItem("neoUser");
   const parsedUser = JSON.parse(user);
 
   if (!parsedUser) {

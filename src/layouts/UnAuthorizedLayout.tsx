@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function UnAuthorizedLayout() {
-  const user: any = localStorage.getItem("neouser");
+  const user: any = localStorage.getItem("neoUser");
   const parsedUser = JSON.parse(user);
 
   if (parsedUser) {

@@ -30,14 +30,14 @@ export default function Login() {
       const userEmail = tokens.signInDetails?.loginId?.toString();
 
       localStorage.setItem(
-        "neouser",
+        "neoUser",
         JSON.stringify({
           ...currentUser,
           idToken,
           userEmail,
         })
       );
-      const user: any = localStorage.getItem("neouser");
+      const user: any = localStorage.getItem("neoUser");
       const parsedUser = JSON.parse(user);
       if (parsedUser) {
         navigate("/");
@@ -47,7 +47,7 @@ export default function Login() {
       console.error("Unable to login", error);
     }
 
-    const user: any = localStorage.getItem("neouser");
+    const user: any = localStorage.getItem("neoUser");
     const parsedUser = JSON.parse(user);
     if (parsedUser) {
       console.log("redirect");
@@ -84,7 +84,7 @@ export default function Login() {
         userEmail,
       })
     );
-    const user: any = localStorage.getItem("neouser");
+    const user: any = localStorage.getItem("neoUser");
     const parsedUser = JSON.parse(user);
     if (parsedUser) {
       navigate("/");

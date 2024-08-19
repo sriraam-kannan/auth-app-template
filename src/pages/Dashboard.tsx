@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { useAuth } from "@/hooks/useAuth";
 import neoAxios from "../lib/neoAxios";
 
 export default function Dashboard() {
-  const user = useCurrentUser();
-  const loginId = user?.currentUser?.signInDetails?.loginId;
+  const { user } = useAuth();
+  console.log("user", user);
+  const loginId = user?.email || user?.userEmail;
+
+  const userDetails: any = localStorage.getItem("neoUser");
+  console.log("userDetails", userDetails);
 
   const onClickProfile = async () => {
     try {

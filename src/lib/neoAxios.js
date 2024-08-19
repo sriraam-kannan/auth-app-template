@@ -6,8 +6,8 @@ const neoAxios = axios.create({
 
 neoAxios.interceptors.request.use(
   (config) => {
-    const neouser = localStorage.getItem("neouser");
-    const parsedNeoUser = JSON.parse(neouser);
+    const neoUser = localStorage.getItem("neoUser");
+    const parsedNeoUser = JSON.parse(neoUser);
     config.headers["token"] = parsedNeoUser.idToken;
 
     return config;
@@ -21,7 +21,7 @@ neoAxios.interceptors.response.use(
   },
   (error) => {
     if (error.response?.request?.status === 401) {
-      localStorage.setItem("neouser", null);
+      localStorage.setItem("neoUser", null);
       localStorage.clear(); //clears all items in local storage.
       window.location.reload();
     }

@@ -14,6 +14,8 @@ import {
 
 export default function Header() {
   const navigate = useNavigate();
+
+  const mode = import.meta.env.MODE;
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <div className="w-full flex-1"></div>
@@ -30,17 +32,32 @@ export default function Header() {
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => {
-              signOut();
-              localStorage.removeItem("neouser");
-              localStorage.removeItem("user_email");
-              localStorage.removeItem("idToken");
-              navigate("/login");
-            }}
-          >
-            Logout
-          </DropdownMenuItem>
+          {mode === "cognito" && (
+            <DropdownMenuItem
+              onClick={async () => {
+                await signOut();
+                localStorage.removeItem("neoUser");
+                localStorage.removeItem("user_email");
+                localStorage.removeItem("idToken");
+                navigate("/login");
+              }}
+            >
+              Logout
+            </DropdownMenuItem>
+          )}
+          {mode === "firebase" && (
+            <DropdownMenuItem
+              onClick={async () => {
+                await signOut();
+                localStorage.removeItem("neoUser");
+                localStorage.removeItem("user_email");
+                localStorage.removeItem("idToken");
+                navigate("/login");
+              }}
+            >
+              Logout
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </header>
